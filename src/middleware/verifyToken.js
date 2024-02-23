@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const jwtDecode = require("jwt-decode");
+const { jwtDecode } = require("jwt-decode");
 
 // Para configurar el tiempo que la sesión estara activa
 const isExpired = (token) => {

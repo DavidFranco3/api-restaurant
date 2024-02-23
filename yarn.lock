@@ -91,51 +91,51 @@
   resolved "https://registry.npmjs.org/@pkgr/core/-/core-0.1.1.tgz"
   integrity sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==
 
-"@sentry-internal/tracing@7.98.0":
-  version "7.98.0"
-  resolved "https://registry.npmjs.org/@sentry-internal/tracing/-/tracing-7.98.0.tgz"
-  integrity sha512-FnhD2uMLIAJvv4XsYPv3qsTTtxrImyLxiZacudJyaWFhxoeVQ8bKKbWJ/Ar68FAwqTtjXMeY5evnEBbRMcQlaA==
+"@sentry-internal/tracing@7.102.1":
+  version "7.102.1"
+  resolved "https://registry.npmjs.org/@sentry-internal/tracing/-/tracing-7.102.1.tgz"
+  integrity sha512-RkFlFyAC0fQOvBbBqnq0CLmFW5m3JJz9pKbZd5vXPraWAlniKSb1bC/4DF9SlNx0FN1LWG+IU3ISdpzwwTeAGg==
   dependencies:
-    "@sentry/core" "7.98.0"
-    "@sentry/types" "7.98.0"
-    "@sentry/utils" "7.98.0"
+    "@sentry/core" "7.102.1"
+    "@sentry/types" "7.102.1"
+    "@sentry/utils" "7.102.1"
 
-"@sentry/core@7.98.0":
-  version "7.98.0"
-  resolved "https://registry.npmjs.org/@sentry/core/-/core-7.98.0.tgz"
-  integrity sha512-baRUcpCNGyk7cApQHMfqEZJkXdvAKK+z/dVWiMqWc5T5uhzMnPE8/gjP1JZsMtJSQ8g5nHimBdI5TwOyZtxPaA==
+"@sentry/core@7.102.1":
+  version "7.102.1"
+  resolved "https://registry.npmjs.org/@sentry/core/-/core-7.102.1.tgz"
+  integrity sha512-QjY+LSP3du3J/C8x/FfEbRxgZgsWd0jfTJ4P7s9f219I1csK4OeBMC3UA1HwEa0pY/9OF6H/egW2CjOcMM5Pdg==
   dependencies:
-    "@sentry/types" "7.98.0"
-    "@sentry/utils" "7.98.0"
+    "@sentry/types" "7.102.1"
+    "@sentry/utils" "7.102.1"
 
-"@sentry/node@7.98.0":
-  version "7.98.0"
-  resolved "https://registry.npmjs.org/@sentry/node/-/node-7.98.0.tgz"
-  integrity sha512-9cHW217DnU9wC4iR+QxmY3q59N1Touh23hPMDtpMRmbRHSgrmLMoHTVPhK9zHsXRs0mUeidmMqY1ubAWauQByw==
+"@sentry/node@7.102.1":
+  version "7.102.1"
+  resolved "https://registry.npmjs.org/@sentry/node/-/node-7.102.1.tgz"
+  integrity sha512-mb3vmM3SGuCruckPiv/Vafeh89UQavTfpPFoU6Jwe6dSpQ39BO8fO8k8Zev+/nP6r/FKLtX17mJobErHECXsYw==
   dependencies:
-    "@sentry-internal/tracing" "7.98.0"
-    "@sentry/core" "7.98.0"
-    "@sentry/types" "7.98.0"
-    "@sentry/utils" "7.98.0"
+    "@sentry-internal/tracing" "7.102.1"
+    "@sentry/core" "7.102.1"
+    "@sentry/types" "7.102.1"
+    "@sentry/utils" "7.102.1"
 
-"@sentry/tracing@7.98.0":
-  version "7.98.0"
-  resolved "https://registry.npmjs.org/@sentry/tracing/-/tracing-7.98.0.tgz"
-  integrity sha512-O5lKcxkeNxoChJI0b/sX3N1TA5TjQuFwH9fMS00xWUFY0ei9HewBZbbx9c9aye2aRIWF2EHMsASZ+GCWGOZTlQ==
+"@sentry/tracing@7.102.1":
+  version "7.102.1"
+  resolved "https://registry.npmjs.org/@sentry/tracing/-/tracing-7.102.1.tgz"
+  integrity sha512-9VQEox0R7ouhhUVHtBwlGlXG5beDCM/Uo0BY+G0M1H03aFJsLAwnxPNeWnK3WvPejxf94EgdimKMjDjv9l2Sbg==
   dependencies:
-    "@sentry-internal/tracing" "7.98.0"
+    "@sentry-internal/tracing" "7.102.1"
 
-"@sentry/types@7.98.0":
-  version "7.98.0"
-  resolved "https://registry.npmjs.org/@sentry/types/-/types-7.98.0.tgz"
-  integrity sha512-pc034ziM0VTETue4bfBcBqTWGy4w0okidtoZJjGVrYAfE95ObZnUGVj/XYIQ3FeCYWIa7NFN2MvdsCS0buwivQ==
+"@sentry/types@7.102.1":
+  version "7.102.1"
+  resolved "https://registry.npmjs.org/@sentry/types/-/types-7.102.1.tgz"
+  integrity sha512-htKorf3t/D0XYtM7foTcmG+rM47rDP6XdbvCcX5gBCuCYlzpM1vqCt2rl3FLktZC6TaIpFRJw1TLfx6m+x5jdA==
 
-"@sentry/utils@7.98.0":
-  version "7.98.0"
-  resolved "https://registry.npmjs.org/@sentry/utils/-/utils-7.98.0.tgz"
-  integrity sha512-0/LY+kpHxItVRY0xPDXPXVsKRb95cXsGSQf8sVMtfSjz++0bLL1U4k7PFz1c5s2/Vk0B8hS6duRrgMv6dMIZDw==
+"@sentry/utils@7.102.1":
+  version "7.102.1"
+  resolved "https://registry.npmjs.org/@sentry/utils/-/utils-7.102.1.tgz"
+  integrity sha512-+8WcFjHVV/HROXSAwMuUzveElBFC43EiTG7SNEBNgOUeQzQVTmbUZXyTVgLrUmtoWqvnIxCacoLxtZo1o67kdg==
   dependencies:
-    "@sentry/types" "7.98.0"
+    "@sentry/types" "7.102.1"
 
 "@swc/helpers@^0.3.13":
   version "0.3.17"
@@ -1825,10 +1825,10 @@ linebreak@^1.0.2:
     base64-js "0.0.8"
     unicode-trie "^2.0.0"
 
-lint-staged@>=15.2.0:
-  version "15.2.1"
-  resolved "https://registry.npmjs.org/lint-staged/-/lint-staged-15.2.1.tgz"
-  integrity sha512-dhwAPnM85VdshybV9FWI/9ghTvMLoQLEXgVMx+ua2DN7mdfzd/tRfoU2yhMcBac0RHkofoxdnnJUokr8s4zKmQ==
+lint-staged@>=15.2.2:
+  version "15.2.2"
+  resolved "https://registry.npmjs.org/lint-staged/-/lint-staged-15.2.2.tgz"
+  integrity sha512-TiTt93OPh1OZOsb5B7k96A/ATl2AjIZo+vnzFZ6oHK5FuTk63ByDtxGQpHm+kFETjEWqgkF95M8FRXKR/LEBcw==
   dependencies:
     chalk "5.3.0"
     commander "11.1.0"
@@ -2021,10 +2021,10 @@ minimist@^1.2.0, minimist@^1.2.6:
   resolved "https://registry.npmjs.org/minimist/-/minimist-1.2.6.tgz"
   integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
 
-moment-timezone@^0.5.44:
-  version "0.5.44"
-  resolved "https://registry.npmjs.org/moment-timezone/-/moment-timezone-0.5.44.tgz"
-  integrity sha512-nv3YpzI/8lkQn0U6RkLd+f0W/zy/JnoR5/EyPz/dNkPTBjA2jNLCVxaiQ8QpeLymhSZvX0wCL5s27NQWdOPwAw==
+moment-timezone@^0.5.45:
+  version "0.5.45"
+  resolved "https://registry.npmjs.org/moment-timezone/-/moment-timezone-0.5.45.tgz"
+  integrity sha512-HIWmqA86KcmCAhnMAN0wuDOARV/525R2+lOLotuGFzn4HO+FH+/645z2wx0Dt3iDv6/p61SIvKnDstISainhLQ==
   dependencies:
     moment "^2.29.4"
 
@@ -2055,10 +2055,10 @@ mongoose-paginate-v2@1.8.0:
   resolved "https://registry.npmjs.org/mongoose-paginate-v2/-/mongoose-paginate-v2-1.8.0.tgz"
   integrity sha512-JiGbGxc/ytIA8UL4GaJdCLuxv5i99+XmTdP4v9YXwiJ85tdOxdrc2NQJL+0O+NRbIl+aAhaOnDbL9bJt7o3zIA==
 
-mongoose@8.1.1:
-  version "8.1.1"
-  resolved "https://registry.npmjs.org/mongoose/-/mongoose-8.1.1.tgz"
-  integrity sha512-DbLb0NsiEXmaqLOpEz+AtAsgwhRw6f25gwa1dF5R7jj6lS1D8X6uTdhBSC8GDVtOwe5Tfw2EL7nTn6hiJT3Bgg==
+mongoose@8.2.0:
+  version "8.2.0"
+  resolved "https://registry.npmjs.org/mongoose/-/mongoose-8.2.0.tgz"
+  integrity sha512-la93n6zCYRbPS+c5N9oTDAktvREy5OT9OCljp1Tah0y3+p8UPMTAoabWaLZMdzYruOtF9/9GRf6MasaZjiZP1A==
   dependencies:
     bson "^6.2.0"
     kareem "2.5.1"
@@ -2126,15 +2126,15 @@ negotiator@0.6.3:
   resolved "https://registry.npmjs.org/negotiator/-/negotiator-0.6.3.tgz"
   integrity sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==
 
-nodemailer@6.9.8:
-  version "6.9.8"
-  resolved "https://registry.npmjs.org/nodemailer/-/nodemailer-6.9.8.tgz"
-  integrity sha512-cfrYUk16e67Ks051i4CntM9kshRYei1/o/Gi8K1d+R34OIs21xdFnW7Pt7EucmVKA0LKtqUGNcjMZ7ehjl49mQ==
+nodemailer@6.9.10:
+  version "6.9.10"
+  resolved "https://registry.npmjs.org/nodemailer/-/nodemailer-6.9.10.tgz"
+  integrity sha512-qtoKfGFhvIFW5kLfrkw2R6Nm6Ur4LNUMykyqu6n9BRKJuyQrqEGwdXXUAbwWEKt33dlWUGXb7rzmJP/p4+O+CA==
 
-nodemon@3.0.3:
-  version "3.0.3"
-  resolved "https://registry.npmjs.org/nodemon/-/nodemon-3.0.3.tgz"
-  integrity sha512-7jH/NXbFPxVaMwmBCC2B9F/V6X1VkEdNgx3iu9jji8WxWcvhMWkmhNWhI5077zknOnZnBzba9hZP6bCPJLSReQ==
+nodemon@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.npmjs.org/nodemon/-/nodemon-3.1.0.tgz"
+  integrity sha512-xqlktYlDMCepBJd43ZQhjWwMw2obW/JRvkrLxq5RCNcuDDX1DbcPT+qT1IlIIdf+DhnWs90JpTMe+Y5KxOchvA==
   dependencies:
     chokidar "^3.5.2"
     debug "^4"
@@ -2439,10 +2439,10 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@>=3.0.0, prettier@3.2.4:
-  version "3.2.4"
-  resolved "https://registry.npmjs.org/prettier/-/prettier-3.2.4.tgz"
-  integrity sha512-FWu1oLHKCrtpO1ypU6J0SbK2d9Ckwysq6bHj/uaCP26DxrPpppCLQRGVuqAxSTvhF00AcvDRyYrLNW7ocBhFFQ==
+prettier@>=3.0.0, prettier@3.2.5:
+  version "3.2.5"
+  resolved "https://registry.npmjs.org/prettier/-/prettier-3.2.5.tgz"
+  integrity sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==
 
 prop-types@^15.8.1:
   version "15.8.1"
