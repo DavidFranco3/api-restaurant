@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 // modelo de la coleccion cajas
 const mesas = new Schema({
     numeroMesa: { type: String },
-    descrpcion: { type: String },
+    descripcion: { type: String },
     numeroPersonas: { type: String },
     estado: { type: String }
 }, {
