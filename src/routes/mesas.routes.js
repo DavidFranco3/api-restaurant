@@ -18,11 +18,12 @@ router.post("/registro", async (req, res) => {
 
 // Obtener las mesas
 router.get("/listar", async (req, res) => {
-    await mesas
-        .find({ estado: "true" })
-        .sort({ _id: -1 })
-        .then((data) => res.json(data))
-        .catch((error) => res.json({ message: error }));
+    try {
+        const data = await mesas.find().sort({ _id: -1 });
+        res.json(data);
+    } catch (error) {
+        res.json({ message: error });
+    }
 });
 
 // Obtener las mesas activas con paginacion
