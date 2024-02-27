@@ -714,7 +714,7 @@ router.get("/listarProductosAdicionales", async (req, res) => {
 router.get("/obtener", async (req, res) => {
     const { numeroTiquet } = req.query;
 
-    eventos
+    await ventas
         .find({ numeroTiquet })
         //.sort({ fecha: -1 })
         .then((data) => res.json(data))
