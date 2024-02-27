@@ -730,9 +730,9 @@ router.get("/obtener", async (req, res) => {
 
 // Obtener una venta en especifico
 router.get("/obtenerVentaAsociada/:tiquetVenta", async (req, res) => {
-    const { tiquetVenta } = req.params;
+    const { numeroTiquet } = req.params;
     await ventas
-        .find({ tiquetVenta })
+        .find({ numeroTiquet })
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
