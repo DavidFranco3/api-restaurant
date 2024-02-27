@@ -716,7 +716,7 @@ router.get("/obtener", async (req, res) => {
 
     eventos
         .find({ numeroTiquet })
-        .sort({ fecha: -1 })
+        //.sort({ fecha: -1 })
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
