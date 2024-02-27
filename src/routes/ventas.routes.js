@@ -711,7 +711,7 @@ router.get("/listarProductosAdicionales", async (req, res) => {
 });
 
 // Obtener una venta en especifico
-router.get("/obtener", async (req, res) => {
+/*router.get("/obtener", async (req, res) => {
     const { numeroTiquet } = req.query;
 
     await ventas
@@ -719,14 +719,14 @@ router.get("/obtener", async (req, res) => {
         //.sort({ fecha: -1 })
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
-});
-/*router.get("/obtener/:id", async (req, res) => {
+});*/
+router.get("/obtener/:numeroTiquet", async (req, res) => {
     const { numeroTiquet } = req.params;
     await ventas
         .find(numeroTiquet)
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
-});*/
+});
 
 // Obtener una venta en especifico
 router.get("/obtenerVentaAsociada/:tiquetVenta", async (req, res) => {
