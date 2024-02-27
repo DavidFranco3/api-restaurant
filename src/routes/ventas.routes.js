@@ -712,9 +712,9 @@ router.get("/listarProductosAdicionales", async (req, res) => {
 
 // Obtener una venta en especifico
 router.get("/obtener/:id", async (req, res) => {
-    const { id } = req.params;
+    const { numeroTiquet } = req.params;
     await ventas
-        .findById(id)
+        .findById(numeroTiquet)
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
