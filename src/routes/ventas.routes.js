@@ -714,7 +714,7 @@ router.get("/listarProductosAdicionales", async (req, res) => {
 router.get("/obtener/:id", async (req, res) => {
     const { numeroTiquet } = req.params;
     await ventas
-        .findById(numeroTiquet)
+        .find(numeroTiquet)
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
