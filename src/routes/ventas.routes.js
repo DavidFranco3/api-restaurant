@@ -788,5 +788,40 @@ router.put("/actualizar/:id", async (req, res) => {
         .catch((error) => res.json({ message: error }));
 });
 
+router.put("/actualizarticket/:numeroTiquet", async (req, res) => {
+    const { numeroTiquet } = req.params;
+    const { tipo, tipoPago, efectivo, cambio, subtotal, total, pagado, iva, comision, productos } = req.body;
+    /*console.log("Datos recibidos:");
+    console.log("Número de tiquet:", numeroTiquet);
+    console.log("tipo pedido:", tipo);
+    console.log("Tipo de pago:", tipoPago);
+    console.log("Efectivo:", efectivo);
+    console.log("Cambio:", cambio);
+    console.log("Subtotal:", subtotal);
+    console.log("Total:", total);
+    console.log("Pagado:", pagado);
+    console.log("IVA:", iva);
+    console.log("Comisión:", comision);
+    console.log("Nuevo producto:", productos);*/
+    try {
+        const updatedVenta = await ventas.findOneAndUpdate(
+            { numeroTiquet: numeroTiquet },
+            { 
+                $set: { tipo,tipoPago, efectivo, cambio, subtotal, total, pagado, iva, comision, productos },
+                
+            },
+            { new: true }
+        );
+        if (updatedVenta) {
+            res.status(200).json({ mensaje: "Datos de la venta actualizados" });
+        } else {
+            res.status(404).json({ mensaje: "Venta no encontrada" });
+        }
+    } catch (error) {
+        res.status(500).json({ mensaje: "Error al actualizar los datos de la venta", error: error.message });
+    }
+});
+
+
 module.exports = router;
 

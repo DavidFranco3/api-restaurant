@@ -123,17 +123,14 @@ router.delete("/eliminar/:id", async (req, res) => {
 router.put("/cancelar/:id", async (req, res) => {
     const { id } = req.params;
     const { estado, idTicket } = req.body;
-    const updateFields = { estado };
-
-    if (idTicket) {
-        updateFields.idTicket = idTicket;
-    }
+    const updateFields = { $set: { estado, idTicket } };
 
     await mesas
-        .updateOne({ _id: id }, { $set: updateFields })
+        .updateOne({ _id: id }, updateFields)
         .then((data) => res.status(200).json({ mensaje: "Estado de la mesa actualizado" }))
         .catch((error) => res.json({ message: error }));
 });
+
 
 
 // Actualizar datos de la categoria
