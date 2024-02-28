@@ -723,10 +723,11 @@ router.get("/listarProductosAdicionales", async (req, res) => {
 router.get("/obtener/:numeroTiquet", async (req, res) => {
     const { numeroTiquet } = req.params;
     await ventas
-        .find(numeroTiquet)
+        .find({ numeroTiquet: numeroTiquet }) // Utiliza un objeto para especificar el filtro
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
+
 
 // Obtener una venta en especifico
 router.get("/obtenerVentaAsociada/:tiquetVenta", async (req, res) => {
