@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const ventas = require("../models/ventas");
+const mesas = require("../models/mesas");
 const { map } = require("lodash");
 
 // Registro de ventas
@@ -254,7 +255,7 @@ router.get("/listarVentasSemana", async (req, res) => {
 router.get("/listarTotalVentasDia", async (req, res) => {
     const { dia } = req.query;
     await ventas
-        .find({ estado: "true", createdAt: { $gte: new Date(dia + 'T00:00:00.000Z'), $lte: new Date(dia + 'T22:09:59.999Z') } })
+        .find({ estado: "cerrado", createdAt: { $gte: new Date(dia + 'T00:00:00.000Z'), $lte: new Date(dia + 'T22:09:59.999Z') } })
         .sort({ _id: -1 })
         .then((data) => {
             //console.log(data)
@@ -359,7 +360,7 @@ router.get("/listarTotalVentasSemana", async (req, res) => {
     const diferenciaMilisegundos = fechaActual - primerDiaAnio;
     const semanaActual = Math.floor(diferenciaMilisegundos / milisegundosEnUnDia / 7) + 1
     await ventas
-        .find({ estado: "true", semana: semana, año: año == añoActual && semana > semanaActual ? (año - 1) : año })
+        .find({ estado: "cerrado", semana: semana, año: año == añoActual && semana > semanaActual ? (año - 1) : año })
         .sort({ _id: -1 })
         .then((data) => {
             //console.log(data)
@@ -791,18 +792,6 @@ router.put("/actualizar/:id", async (req, res) => {
 router.put("/actualizarticket/:numeroTiquet", async (req, res) => {
     const { numeroTiquet } = req.params;
     const { tipo, tipoPago, efectivo, cambio, subtotal, total, pagado, iva, comision, productos } = req.body;
-    /*console.log("Datos recibidos:");
-    console.log("Número de tiquet:", numeroTiquet);
-    console.log("tipo pedido:", tipo);
-    console.log("Tipo de pago:", tipoPago);
-    console.log("Efectivo:", efectivo);
-    console.log("Cambio:", cambio);
-    console.log("Subtotal:", subtotal);
-    console.log("Total:", total);
-    console.log("Pagado:", pagado);
-    console.log("IVA:", iva);
-    console.log("Comisión:", comision);
-    console.log("Nuevo producto:", productos);*/
     try {
         const updatedVenta = await ventas.findOneAndUpdate(
             { numeroTiquet: numeroTiquet },
@@ -822,6 +811,51 @@ router.put("/actualizarticket/:numeroTiquet", async (req, res) => {
     }
 });
 
+
+
+router.get("/obtenerVentasenMesasConTicket", async (req, res) => {
+    try {
+      const resultado = await mesas.aggregate([
+        {
+          $match: {
+            idTicket: { $ne: "" } // Filtra los documentos donde idTicket no es vacío
+          }
+        },
+        {
+          $lookup: {
+            from: "ventas",
+            localField: "idTicket",
+            foreignField: "numeroTiquet",
+            as: "ventas_mesa"
+          }
+        },
+        {
+          $unwind: "$ventas_mesa"
+        },
+        {
+          $match: {
+            $expr: {
+              $eq: ["$idTicket", "$ventas_mesa.numeroTiquet"]
+            }
+          }
+        },
+        {
+          $project: {
+            "ventas_mesa": 1 // Proyecta el campo completo de ventas
+          }
+        }
+      ]);
+  
+      if (resultado.length > 0) {
+        res.status(200).json(resultado);
+      } else {
+        res.status(200).json([]);
+      }
+    } catch (error) {
+      console.error("Error al obtener ventas de mesas con ticket:", error);
+      res.status(500).json({ error: "Error al obtener ventas de mesas con ticket" });
+    }
+  });
 
 module.exports = router;
 
