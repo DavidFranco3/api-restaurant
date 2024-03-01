@@ -3,6 +3,7 @@ const router = express.Router();
 const ventas = require("../models/ventas");
 const mesas = require("../models/mesas");
 const { map } = require("lodash");
+const moment = require('moment-timezone');
 
 // Registro de ventas
 router.post("/registro", async (req, res) => {
@@ -461,7 +462,7 @@ router.get("/listarTotalVentasMes", async (req, res) => {
     const mesActual = fechaActual.getMonth() + 1;
     console.log(mes, año);
     await ventas
-        .find({ estado: "true", agrupar: mes, año: año == añoActual && mes > mesActual ? (año - 1) : año })
+        .find({ estado: "cerrado", agrupar: mes, año: año == añoActual && mes > mesActual ? (año - 1) : año })
         .sort({ _id: -1 })
         .then((data) => {
             //console.log(data)
@@ -856,6 +857,27 @@ router.get("/obtenerVentasenMesasConTicket", async (req, res) => {
       res.status(500).json({ error: "Error al obtener ventas de mesas con ticket" });
     }
   });
+
+
+  router.get("/ventasTotalesDelDia", async (req, res) => {
+    try {
+        // Obtener la fecha actual en la zona horaria de México
+        const diaActual = moment.tz("America/Mexico_City").format("YYYY-MM-DD");
+
+        const ventasDelDia = await ventas.find({
+            estado: "cerrado",
+            createdAt: {
+                $gte: new Date(diaActual + 'T00:00:00.000Z'), // Mayor o igual que el inicio del día
+                $lte: new Date(diaActual + 'T23:59:59.999Z')  // Menor o igual que el final del día
+            }
+        });
+
+        res.status(200).json(ventasDelDia);
+    } catch (error) {
+        console.error("Error al obtener las ventas del día:", error);
+        res.status(500).json({ error: "Error al obtener las ventas del día" });
+    }
+});
 
 module.exports = router;
 
