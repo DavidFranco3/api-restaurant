@@ -73,6 +73,7 @@ app.use(cors());
 app.use(require("./src/routes/login.routes"));
 app.use("/usuarios/", verifyToken, require("./src/routes/usuarios.routes"));
 app.use("/clientes/", require("./src/routes/usuarios.routes"));
+app.use("/comision/", verifyToken, require("./src/routes/comision.routes"));
 app.use("/ventas/", verifyToken, require("./src/routes/ventas.routes"));
 app.use("/pedidos/", verifyToken, require("./src/routes/pedidosClientes.routes"));
 app.use("/categorias/", verifyToken, require("./src/routes/categorias.routes"));
