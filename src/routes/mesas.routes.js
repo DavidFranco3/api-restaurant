@@ -120,7 +120,7 @@ router.delete("/eliminar/:id", async (req, res) => {
 });
 
 // Cambiar el estado de una mesa
-router.put("/cancelar/:id", async (req, res) => {
+router.put("/ocuparDesocupar/:id", async (req, res) => {
     const { id } = req.params;
     const { estado, idTicket } = req.body;
     const updateFields = { $set: { estado, idTicket } };
