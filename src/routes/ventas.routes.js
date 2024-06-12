@@ -835,6 +835,28 @@ router.put("/actualizarticketprods/:numeroTiquet", async (req, res) => {
     }
 });
 
+// ACTUALIZAR TICKET PARA REALIZAR COBRO
+router.put("/cobrarTicket/:numeroTiquet", async (req, res) => {
+    const { numeroTiquet } = req.params;
+    const { cliente, tipo, mesa, usuario, estado, detalles, observaciones, tipoPago, hacerPedido, tipoPedido, tipoDescuento, descuento, pagado, total, iva, atendido, comision, año, mes, semana, fecha, metodosPago } = req.body;
+    try {
+        const updatedVenta = await ventas.findOneAndUpdate(
+            { numeroTiquet: numeroTiquet },
+            { 
+                $set: { cliente, tipo, mesa, usuario, estado, detalles, observaciones, tipoPago, hacerPedido, tipoPedido, tipoDescuento, descuento, pagado, total, iva, atendido, comision, año, mes, semana, fecha, metodosPago },
+                
+            },
+            { new: true }
+        );
+        if (updatedVenta) {
+            res.status(200).json({ mensaje: "Datos de la venta actualizados" });
+        } else {
+            res.status(404).json({ mensaje: "Venta no encontrada" });
+        }
+    } catch (error) {
+        res.status(500).json({ mensaje: "Error al actualizar los datos de la venta", error: error.message });
+    }
+});
 
 router.get("/obtenerVentasenMesasConTicket", async (req, res) => {
     try {
