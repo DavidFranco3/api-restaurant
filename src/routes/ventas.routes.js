@@ -812,6 +812,28 @@ router.put("/actualizarticket/:numeroTiquet", async (req, res) => {
     }
 });
 
+// ACTUALIZAR SOLO LOS PRODUCTOS DEL TICKET
+router.put("/actualizarticketprods/:numeroTiquet", async (req, res) => {
+    const { numeroTiquet } = req.params;
+    const { productos, subtotal, detalles } = req.body;
+    try {
+        const updatedVenta = await ventas.findOneAndUpdate(
+            { numeroTiquet: numeroTiquet },
+            { 
+                $set: { productos, subtotal, detalles },
+                
+            },
+            { new: true }
+        );
+        if (updatedVenta) {
+            res.status(200).json({ mensaje: "Datos de la venta actualizados" });
+        } else {
+            res.status(404).json({ mensaje: "Venta no encontrada" });
+        }
+    } catch (error) {
+        res.status(500).json({ mensaje: "Error al actualizar los datos de la venta", error: error.message });
+    }
+});
 
 
 router.get("/obtenerVentasenMesasConTicket", async (req, res) => {
