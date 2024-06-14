@@ -25,11 +25,11 @@ const ventas = new Schema({
   iva: { type: Number },
   atendido: { type: String },
   comision: { type: Number },
-  agrupar: { type: String },
+  mes: { type: String },
   año: { type: String },
   semana: { type: String },
   fecha: {type: String},
-  metodosDePago: { type: Array, default: [] },
+  metodosPago: { type: Array, default: [] },
 }, {
   timestamps: true
 });
