@@ -742,13 +742,13 @@ router.get("/obtenerVentaAsociada/:tiquetVenta", async (req, res) => {
 
 // OBTENER VENTAS CON ESTADO PP
 router.get("/obtenerPedidosPendientes", async (req, res) => {
-    await ventas
-    .find({ estado: "PP"})
-    .count()
-    .sort({ _id: -1 })
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
-})
+    try {
+        const pedidosPendientes = await ventas.find({ estado: "PP" }).sort({ _id: -1 });
+        res.status(200).json(pedidosPendientes);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
 
 // Borrar una venta
 router.delete("/eliminar/:id", async (req, res) => {
