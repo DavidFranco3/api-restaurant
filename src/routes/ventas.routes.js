@@ -740,6 +740,16 @@ router.get("/obtenerVentaAsociada/:tiquetVenta", async (req, res) => {
         .catch((error) => res.json({ message: error }));
 });
 
+// OBTENER VENTAS CON ESTADO PP
+router.get("/obtenerPedidosPendientes", async (req, res) => {
+    await ventas
+    .find({ estado: "PP"})
+    .count()
+    .sort({ _id: -1 })
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
+})
+
 // Borrar una venta
 router.delete("/eliminar/:id", async (req, res) => {
     const { id } = req.params;
@@ -860,29 +870,29 @@ router.put("/cobrarTicket/:numeroTiquet", async (req, res) => {
 
 router.get("/obtenerVentasenMesasConTicket", async (req, res) => {
     try {
-      const resultado = await mesas.aggregate([
+    const resultado = await mesas.aggregate([
         {
-          $match: {
-            idTicket: { $ne: "" } // Filtra los documentos donde idTicket no es vacío
-          }
-        },
-        {
-          $lookup: {
-            from: "ventas",
-            localField: "idTicket",
-            foreignField: "numeroTiquet",
-            as: "ventas_mesa"
-          }
-        },
-        {
-          $unwind: "$ventas_mesa"
-        },
-        {
-          $match: {
-            $expr: {
-              $eq: ["$idTicket", "$ventas_mesa.numeroTiquet"]
+            $match: {
+                idTicket: { $ne: "" } // Filtra los documentos donde idTicket no es vacío
             }
-          }
+        },
+        {
+            $lookup: {
+                from: "ventas",
+                localField: "idTicket",
+                foreignField: "numeroTiquet",
+                as: "ventas_mesa"
+            }
+        },
+        {
+            $unwind: "$ventas_mesa"
+        },
+        {
+            $match: {
+                $expr: {
+                    $eq: ["$idTicket", "$ventas_mesa.numeroTiquet"]
+                }
+            }
         },
         {
           $project: {
