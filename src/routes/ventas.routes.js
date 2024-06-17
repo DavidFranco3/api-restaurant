@@ -462,7 +462,7 @@ router.get("/listarTotalVentasMes", async (req, res) => {
     const mesActual = fechaActual.getMonth() + 1;
     console.log(mes, año);
     await ventas
-        .find({ estado: "cerrado", agrupar: mes, año: año == añoActual && mes > mesActual ? (año - 1) : año })
+        .find({ estado: "cerrado", mes: mes, año: año == añoActual && mes > mesActual ? (año - 1) : año })
         .sort({ _id: -1 })
         .then((data) => {
             //console.log(data)
