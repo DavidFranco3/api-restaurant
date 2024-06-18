@@ -235,7 +235,7 @@ router.get("/listarVentasDia", async (req, res) => {
     const { dia } = req.query;
 
     await ventas
-        .find({ estado: "true", createdAt: { $gte: new Date(dia + 'T00:00:00.000Z'), $lte: new Date(dia + 'T22:09:59.999Z') } })
+        .find({ estado: "COBR", createdAt: { $gte: new Date(dia + 'T00:00:00.000Z'), $lte: new Date(dia + 'T22:09:59.999Z') } })
         .sort({ _id: -1 })
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
