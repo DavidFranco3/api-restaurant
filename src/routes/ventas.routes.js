@@ -222,7 +222,7 @@ router.get("/listarPaginandoDia", async (req, res) => {
     const skip = (pagina - 1) * limite;
 
     await ventas
-        .find({ estado: "true", createdAt: { $gte: new Date(dia + 'T00:00:00.000Z'), $lte: new Date(dia + 'T22:09:59.999Z') } })
+        .find({ estado: "COBR", createdAt: { $gte: new Date(dia + 'T00:00:00.000Z'), $lte: new Date(dia + 'T22:09:59.999Z') } })
         .sort({ _id: -1 })
         .skip(skip)
         .limit(limite)
@@ -235,7 +235,7 @@ router.get("/listarVentasDia", async (req, res) => {
     const { dia } = req.query;
 
     await ventas
-        .find({ estado: "true", createdAt: { $gte: new Date(dia + 'T00:00:00.000Z'), $lte: new Date(dia + 'T22:09:59.999Z') } })
+        .find({ estado: "COBR", createdAt: { $gte: new Date(dia + 'T00:00:00.000Z'), $lte: new Date(dia + 'T22:09:59.999Z') } })
         .sort({ _id: -1 })
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
@@ -246,7 +246,7 @@ router.get("/listarVentasSemana", async (req, res) => {
     const { semana, año } = req.query;
 
     await ventas
-        .find({ estado: "true", semana, semana, año: año })
+        .find({ estado: "COBR", semana, semana, año: año })
         .sort({ _id: -1 })
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
@@ -256,7 +256,7 @@ router.get("/listarVentasSemana", async (req, res) => {
 router.get("/listarTotalVentasDia", async (req, res) => {
     const { dia } = req.query;
     await ventas
-        .find({ estado: "cerrado", createdAt: { $gte: new Date(dia + 'T00:00:00.000Z'), $lte: new Date(dia + 'T22:09:59.999Z') } })
+        .find({ estado: "COBR", createdAt: { $gte: new Date(dia + 'T00:00:00.000Z'), $lte: new Date(dia + 'T22:09:59.999Z') } })
         .sort({ _id: -1 })
         .then((data) => {
             //console.log(data)
@@ -361,7 +361,7 @@ router.get("/listarTotalVentasSemana", async (req, res) => {
     const diferenciaMilisegundos = fechaActual - primerDiaAnio;
     const semanaActual = Math.floor(diferenciaMilisegundos / milisegundosEnUnDia / 7) + 1
     await ventas
-        .find({ estado: "cerrado", semana: semana, año: año == añoActual && semana > semanaActual ? (año - 1) : año })
+        .find({ estado: "COBR", semana: semana, año: año == añoActual && semana > semanaActual ? (año - 1) : año })
         .sort({ _id: -1 })
         .then((data) => {
             //console.log(data)
@@ -462,7 +462,7 @@ router.get("/listarTotalVentasMes", async (req, res) => {
     const mesActual = fechaActual.getMonth() + 1;
     console.log(mes, año);
     await ventas
-        .find({ estado: "cerrado", mes: mes, año: año == añoActual && mes > mesActual ? (año - 1) : año })
+        .find({ estado: "COBR", mes: mes, año: año == añoActual && mes > mesActual ? (año - 1) : año })
         .sort({ _id: -1 })
         .then((data) => {
             //console.log(data)
@@ -919,7 +919,7 @@ router.get("/obtenerVentasenMesasConTicket", async (req, res) => {
         const diaActual = moment.tz("America/Mexico_City").format("YYYY-MM-DD");
 
         const ventasDelDia = await ventas.find({
-            estado: "cerrado",
+            estado: "COBR",
             createdAt: {
                 $gte: new Date(diaActual + 'T00:00:00.000Z'), // Mayor o igual que el inicio del día
                 $lte: new Date(diaActual + 'T23:59:59.999Z')  // Menor o igual que el final del día
