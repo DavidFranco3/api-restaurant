@@ -247,7 +247,7 @@ router.get("/listarVentasRangoFechas", async (req, res) => {
 
     await ventas
         .find({ estado: "COBR", createdAt: { $gte: new Date(fechaInicial + 'T00:00:00.000Z'), $lte: new Date(fechaFinal + 'T22:09:59.999Z') } })
-        .sort({ _id: -1 })
+        .sort({ fecha: -1 })
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
