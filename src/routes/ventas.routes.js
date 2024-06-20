@@ -241,6 +241,17 @@ router.get("/listarVentasDia", async (req, res) => {
         .catch((error) => res.json({ message: error }));
 });
 
+// OBTENER VENTAS POR FECHAS EN ESPECIFICO
+router.get("/listarVentasRangoFechas", async (req, res) => {
+    const { fechaInicial, fechaFinal } = req.query;
+
+    await ventas
+        .find({ estado: "COBR", createdAt: { $gte: new Date(fechaInicial + 'T00:00:00.000Z'), $lte: new Date(fechaFinal + 'T22:09:59.999Z') } })
+        .sort({ _id: -1 })
+        .then((data) => res.json(data))
+        .catch((error) => res.json({ message: error }));
+});
+
 // Obtener las ventas
 router.get("/listarVentasSemana", async (req, res) => {
     const { semana, año } = req.query;
