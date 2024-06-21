@@ -29,7 +29,7 @@ const ventas = new Schema({
   año: { type: String },
   semana: { type: String },
   fecha: {type: Date},
-  metodosPago: { type: Array, default: [] },
+  metodosPago: { type: Object, default: {} },
 }, {
   timestamps: true
 });
