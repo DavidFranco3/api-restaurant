@@ -255,7 +255,8 @@ router.get("/listarVentasDia", async (req, res) => {
 
 // OBTENER VENTAS POR FECHAS EN ESPECIFICO
 router.get("/listarVentasRangoFechas", async (req, res) => {
-  const { fechaInicial, fechaFinal, filtros } = req.query;
+  const { fechaInicial, fechaFinal } = req.query;
+  const { filtros } = req.body;
 
   // Crear una consulta base con las fechas
   let query = {
@@ -396,25 +397,23 @@ router.get("/listarTotalVentasDia", async (req, res) => {
           // console.log(totales.total)
         }
       });
-      res
-        .status(200)
-        .json({
-          efectivo: efectivo,
-          tarjeta: tarjeta,
-          transferencia: transferencia,
-          pendiente: pendiente,
-          tortasVendidas: productos_vendidos,
-          bebidasVendidas: bebidas_vendidas,
-          extrasVendidos: extras_vendidos,
-          sandwichesVendidos: sandwiches_vendidos,
-          desayunosVendidos: desayunos_vendidos,
-          hamburguesasVendidas: hamburguesas_vendidas,
-          cafeteriaVendida: cafeteria_vendida,
-          enviosVendidos: envios_vendidos,
-          postresVendidos: postres_vendidos,
-          promocionesVendidas: promociones_vendidas,
-          tacosVendidos: tacos_vendidos,
-        });
+      res.status(200).json({
+        efectivo: efectivo,
+        tarjeta: tarjeta,
+        transferencia: transferencia,
+        pendiente: pendiente,
+        tortasVendidas: productos_vendidos,
+        bebidasVendidas: bebidas_vendidas,
+        extrasVendidos: extras_vendidos,
+        sandwichesVendidos: sandwiches_vendidos,
+        desayunosVendidos: desayunos_vendidos,
+        hamburguesasVendidas: hamburguesas_vendidas,
+        cafeteriaVendida: cafeteria_vendida,
+        enviosVendidos: envios_vendidos,
+        postresVendidos: postres_vendidos,
+        promocionesVendidas: promociones_vendidas,
+        tacosVendidos: tacos_vendidos,
+      });
     })
     .catch((error) => res.json({ message: error }));
 });
@@ -527,25 +526,23 @@ router.get("/listarTotalVentasSemana", async (req, res) => {
           // console.log(totales.total)
         }
       });
-      res
-        .status(200)
-        .json({
-          efectivo: efectivo,
-          tarjeta: tarjeta,
-          transferencia: transferencia,
-          pendiente: pendiente,
-          tortasVendidas: productos_vendidos,
-          bebidasVendidas: bebidas_vendidas,
-          extrasVendidos: extras_vendidos,
-          sandwichesVendidos: sandwiches_vendidos,
-          desayunosVendidos: desayunos_vendidos,
-          hamburguesasVendidas: hamburguesas_vendidas,
-          cafeteriaVendida: cafeteria_vendida,
-          enviosVendidos: envios_vendidos,
-          postresVendidos: postres_vendidos,
-          promocionesVendidas: promociones_vendidas,
-          tacosVendidos: tacos_vendidos,
-        });
+      res.status(200).json({
+        efectivo: efectivo,
+        tarjeta: tarjeta,
+        transferencia: transferencia,
+        pendiente: pendiente,
+        tortasVendidas: productos_vendidos,
+        bebidasVendidas: bebidas_vendidas,
+        extrasVendidos: extras_vendidos,
+        sandwichesVendidos: sandwiches_vendidos,
+        desayunosVendidos: desayunos_vendidos,
+        hamburguesasVendidas: hamburguesas_vendidas,
+        cafeteriaVendida: cafeteria_vendida,
+        enviosVendidos: envios_vendidos,
+        postresVendidos: postres_vendidos,
+        promocionesVendidas: promociones_vendidas,
+        tacosVendidos: tacos_vendidos,
+      });
     })
     .catch((error) => res.json({ message: error }));
 });
@@ -652,25 +649,23 @@ router.get("/listarTotalVentasMes", async (req, res) => {
           // console.log(totales.total)
         }
       });
-      res
-        .status(200)
-        .json({
-          efectivo: efectivo,
-          tarjeta: tarjeta,
-          transferencia: transferencia,
-          pendiente: pendiente,
-          tortasVendidas: productos_vendidos,
-          bebidasVendidas: bebidas_vendidas,
-          extrasVendidos: extras_vendidos,
-          sandwichesVendidos: sandwiches_vendidos,
-          desayunosVendidos: desayunos_vendidos,
-          hamburguesasVendidas: hamburguesas_vendidas,
-          cafeteriaVendida: cafeteria_vendida,
-          enviosVendidos: envios_vendidos,
-          postresVendidos: postres_vendidos,
-          promocionesVendidas: promociones_vendidas,
-          tacosVendidos: tacos_vendidos,
-        });
+      res.status(200).json({
+        efectivo: efectivo,
+        tarjeta: tarjeta,
+        transferencia: transferencia,
+        pendiente: pendiente,
+        tortasVendidas: productos_vendidos,
+        bebidasVendidas: bebidas_vendidas,
+        extrasVendidos: extras_vendidos,
+        sandwichesVendidos: sandwiches_vendidos,
+        desayunosVendidos: desayunos_vendidos,
+        hamburguesasVendidas: hamburguesas_vendidas,
+        cafeteriaVendida: cafeteria_vendida,
+        enviosVendidos: envios_vendidos,
+        postresVendidos: postres_vendidos,
+        promocionesVendidas: promociones_vendidas,
+        tacosVendidos: tacos_vendidos,
+      });
     })
     .catch((error) => res.json({ message: error }));
 });
@@ -1082,12 +1077,10 @@ router.put("/actualizarticket/:numeroTiquet", async (req, res) => {
       res.status(404).json({ mensaje: "Venta no encontrada" });
     }
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        mensaje: "Error al actualizar los datos de la venta",
-        error: error.message,
-      });
+    res.status(500).json({
+      mensaje: "Error al actualizar los datos de la venta",
+      error: error.message,
+    });
   }
 });
 
@@ -1109,12 +1102,10 @@ router.put("/actualizarticketprods/:numeroTiquet", async (req, res) => {
       res.status(404).json({ mensaje: "Venta no encontrada" });
     }
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        mensaje: "Error al actualizar los datos de la venta",
-        error: error.message,
-      });
+    res.status(500).json({
+      mensaje: "Error al actualizar los datos de la venta",
+      error: error.message,
+    });
   }
 });
 
@@ -1182,12 +1173,10 @@ router.put("/cobrarTicket/:numeroTiquet", async (req, res) => {
       res.status(404).json({ mensaje: "Venta no encontrada" });
     }
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        mensaje: "Error al actualizar los datos de la venta",
-        error: error.message,
-      });
+    res.status(500).json({
+      mensaje: "Error al actualizar los datos de la venta",
+      error: error.message,
+    });
   }
 });
 
