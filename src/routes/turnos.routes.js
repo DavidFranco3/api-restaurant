@@ -36,3 +36,5 @@ router.put("/cerrar/:id", async (req, res) => {
     )
     .catch((error) => res.json({ message: error }));
 });
+
+module.exports = router;
