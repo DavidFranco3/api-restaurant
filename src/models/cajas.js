@@ -6,7 +6,7 @@ const cajas = new Schema({
     idCajero: { type: String },
     cajero: { type: String },
     estado: { type: String },
-    saldo: { type: String }
+    saldo: { type: Number }
 }, {
     timestamps: true
 });
