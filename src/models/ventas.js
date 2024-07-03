@@ -4,6 +4,7 @@ const { Schema } = mongoose;
 // modelo de la coleccion ventas
 const ventas = new Schema({
   numeroTiquet: { type: String },
+  turno: { type: String },
   cliente: { type: String },
   mesa: { type: String },
   tiquetVenta: { type: String },
