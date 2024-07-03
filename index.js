@@ -75,15 +75,28 @@ app.use("/usuarios/", verifyToken, require("./src/routes/usuarios.routes"));
 app.use("/clientes/", require("./src/routes/usuarios.routes"));
 app.use("/comision/", verifyToken, require("./src/routes/comision.routes"));
 app.use("/ventas/", verifyToken, require("./src/routes/ventas.routes"));
-app.use("/pedidos/", verifyToken, require("./src/routes/pedidosClientes.routes"));
+app.use(
+  "/pedidos/",
+  verifyToken,
+  require("./src/routes/pedidosClientes.routes")
+);
 app.use("/categorias/", verifyToken, require("./src/routes/categorias.routes"));
 app.use("/productos/", verifyToken, require("./src/routes/productos.routes"));
 app.use("/logs/", verifyToken, require("./src/routes/logSistema.routes"));
-app.use("/ingredientes/", verifyToken, require("./src/routes/ingredientes.routes"));
+app.use(
+  "/ingredientes/",
+  verifyToken,
+  require("./src/routes/ingredientes.routes")
+);
 app.use("/cajas/", verifyToken, require("./src/routes/cajas.routes"));
-app.use("/movimientosCajas/", verifyToken, require("./src/routes/movimientosCajas.routes"));
+app.use(
+  "/movimientosCajas/",
+  verifyToken,
+  require("./src/routes/movimientosCajas.routes")
+);
 app.use("/mesas/", verifyToken, require("./src/routes/mesas.routes"));
 app.use("/reservar/", verifyToken, require("./src/routes/reservar.routes"));
+app.use("/turno/", verifyToken, require("./src/routes/turnos.routes"));
 
 app.use(notFound);
 app.use(Sentry.Handlers.errorHandler());
@@ -95,4 +108,3 @@ const server = app.listen(PORT, () => {
 });
 
 module.exports = app;
-
