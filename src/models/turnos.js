@@ -11,6 +11,7 @@ const turnos = new Schema(
     fechaFinal: { type: Date },
     observaciones: { type: String },
     fondoCaja: { type: Number },
+    totalEfectivo: { type: Number },
     estado: { type: String },
   },
   {
