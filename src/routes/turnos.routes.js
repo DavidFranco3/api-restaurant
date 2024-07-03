@@ -37,9 +37,9 @@ router.get("/ultimo", async (req, res) => {
 // Terminar turno
 router.put("/cerrar/:id", async (req, res) => {
   const { id } = req.params;
-  const { estado, fechaFinal } = req.body;
+  const { estado, fechaFinal, totalEfectivo } = req.body;
   await turnos
-    .updateOne({ _id: id }, { $set: { estado, fechaFinal } })
+    .updateOne({ _id: id }, { $set: { estado, fechaFinal, totalEfectivo } })
     .then((data) =>
       res.status(200).json({ mensaje: "Estado del ingrediente actualizado" })
     )
