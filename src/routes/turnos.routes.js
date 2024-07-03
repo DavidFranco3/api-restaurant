@@ -25,6 +25,15 @@ router.get("/listar", async (req, res) => {
     .catch((error) => res.json({ message: error }));
 });
 
+// Obtener el último turno creado
+router.get("/ultimo", async (req, res) => {
+  await turnos
+    .findOne()
+    .sort({ _id: -1 })
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
+});
+
 // Terminar turno
 router.put("/cerrar/:id", async (req, res) => {
   const { id } = req.params;
