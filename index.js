@@ -97,7 +97,12 @@ app.use(
 app.use("/mesas/", verifyToken, require("./src/routes/mesas.routes"));
 app.use("/reservar/", verifyToken, require("./src/routes/reservar.routes"));
 app.use("/turno/", verifyToken, require("./src/routes/turnos.routes"));
-app.use("/movTurnoCaja", verifyToken, require("./src/routes/movimientosTurnosCajas.routes"));
+app.use(
+  "/movTurnoCaja",
+  verifyToken,
+  require("./src/routes/movimientosTurnosCajas.routes")
+);
+app.use("/insumos", verifyToken, require("./src/routes/insumos.routes"));
 
 app.use(notFound);
 app.use(Sentry.Handlers.errorHandler());
