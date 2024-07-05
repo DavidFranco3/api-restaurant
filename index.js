@@ -103,6 +103,11 @@ app.use(
   require("./src/routes/movimientosTurnosCajas.routes")
 );
 app.use("/insumos", verifyToken, require("./src/routes/insumos.routes"));
+app.use(
+  "/movInsumos",
+  verifyToken,
+  require("./src/routes/movimientosInsumos.routes")
+);
 
 app.use(notFound);
 app.use(Sentry.Handlers.errorHandler());
