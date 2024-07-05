@@ -9,6 +9,7 @@ const insumos = new Schema(
     umTrabajo: { type: String },
     stock: { type: Number },
     precioCompra: { type: Number },
+    precioUnitario: { type: Number },
     estado: { type: String },
   },
   {
