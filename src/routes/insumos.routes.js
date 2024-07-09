@@ -51,9 +51,12 @@ router.put("/cancelar/:id", async (req, res) => {
 // Actualizar los datos de un insumo
 router.put("/actualizar/:id", async (req, res) => {
   const { id } = req.params;
-  const { stock, precioCompra, precioUnitario } = req.body;
+  const { nombre, umCompra, stock, precioCompra, precioUnitario } = req.body;
   await insumos
-    .updateOne({ _id: id }, { $set: { saldo } })
+    .updateOne(
+      { _id: id },
+      { $set: { nombre, umCompra, stock, precioCompra, precioUnitario } }
+    )
     .then((data) =>
       res.status(200).json({ mensaje: "Datos del insumo actualizados" })
     )
