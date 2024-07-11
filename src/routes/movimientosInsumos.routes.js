@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const movimientosInsumos = require("../models/movimientosTurnosCajas");
+const movimientosInsumos = require("../models/movimientosInsumos");
 
 // Registro de movimientos de insumos
 router.post("/registro", async (req, res) => {
