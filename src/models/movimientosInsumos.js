@@ -4,7 +4,6 @@ const { Schema } = mongoose;
 
 const movimientosInsumos = new Schema(
   {
-    idTurno: { type: String },
     nombreInsumo: { type: String },
     movimiento: { type: String },
     cantidad: { type: Number },
