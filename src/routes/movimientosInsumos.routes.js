@@ -17,11 +17,9 @@ router.post("/registro", async (req, res) => {
 });
 
 // Obtener los movimientos de insumos
-router.get("/listar", async (req, res) => {
-  const { idTurno } = req.query;
-
+router.get("/listar", async (req, res) => 
   await movimientosInsumos
-    .find({ idTurno })
+    .find()
     .sort({ _id: -1 })
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
