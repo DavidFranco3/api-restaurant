@@ -17,6 +17,6 @@ const movimientosInsumos = new Schema(
 
 module.exports = mongoose.model(
   "movimientosInsumos",
-  movimientosInsumosm,
+  movimientosInsumos,
   "movimientosInsumos"
 );
