@@ -7,6 +7,7 @@ const movimientosInsumos = new Schema(
     nombreInsumo: { type: String },
     movimiento: { type: String },
     cantidad: { type: Number },
+    umInsumo: { type: String },
     fecha: { type: Date },
     razon: { type: String },
   },
