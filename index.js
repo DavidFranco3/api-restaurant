@@ -108,6 +108,7 @@ app.use(
   verifyToken,
   require("./src/routes/movimientosInsumos.routes")
 );
+app.use("/logo", verifyToken, require("./src/routes/logo.routes"));
 
 app.use(notFound);
 app.use(Sentry.Handlers.errorHandler());
