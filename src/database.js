@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 // Credenciales para conexion a Mongo Atlas
 const URI = "mongodb+srv://tpv-la-nena:74CDFTgpyW5783eh@cluster0.dsbmu.mongodb.net/restaurantDemo"; // tpv test
 
+
 // Credenciales para conexion a Mongo Atlas
 // const URI = "mongodb+srv://tpv-la-nena:74CDFTgpyW5783eh@cluster0.dsbmu.mongodb.net/restaurant"; // tpv test
 
