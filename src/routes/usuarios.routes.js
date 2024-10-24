@@ -1,10 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const usuarios = require("../models/usuarios");
+const bcrypt = require("bcrypt");
 
 // Registro de administradores
 router.post("/registro", async (req, res) => {
-    const { usuario } = req.body;
+    const { usuario, password } = req.body;
+
+    // Hashear la contraseña
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     // Inicia validacion para no registrar usuarios con el mismo correo electronico
     const busqueda = await usuarios.findOne({ usuario });
@@ -12,7 +17,10 @@ router.post("/registro", async (req, res) => {
     if (busqueda && busqueda.usuario === usuario) {
         return res.status(401).json({ mensaje: "Usuario ya registrado" });
     } else {
-        const usuarioRegistrar = usuarios(req.body);
+        const usuarioRegistrar = new usuarios({
+            ...req.body,
+            password: hashedPassword  // Guardar la contraseña hasheada
+        });
         await usuarioRegistrar
             .save()
             .then((data) =>
@@ -203,14 +211,28 @@ router.put("/actualizar/:id", async (req, res) => {
     const { id } = req.params;
     const { nombre, usuario, password, admin, rol } = req.body;
 
-     // Inicia validacion para no registrar usuarios con el mismo correo electronico
-     const busqueda = await usuarios.findOne({ usuario });
-     
+    // Inicializa un objeto con los datos a actualizar
+    const updateData = { nombre, usuario, admin, rol };
+
+    // Si se proporciona una nueva contraseña, hashearla
+    if (password) {
+        const saltRounds = 10; // Puedes ajustar este número
+        try {
+            const hashedPassword = await bcrypt.hash(password, saltRounds);
+            updateData.password = hashedPassword; // Añade la contraseña hasheada al objeto de actualización
+        } catch (error) {
+            return res.status(500).json({ mensaje: "Error al hashear la contraseña", error: error.message });
+        }
+    }
+
+    // Inicia validacion para no registrar usuarios con el mismo correo electronico
+    const busqueda = await usuarios.findOne({ usuario });
+
     if (busqueda && busqueda.usuario === usuario && busqueda._id != id) {
         return res.status(401).json({ mensaje: "Usuario ya registrado" });
     } else {
         await usuarios
-            .updateOne({ _id: id }, { $set: { nombre, usuario, password, admin, rol } })
+            .updateOne({ _id: id }, { $set: updateData })
             .then((data) => res.status(200).json({ mensaje: "Datos del usuario actualizados" }))
             .catch((error) => res.json({ message: error }));
     }
