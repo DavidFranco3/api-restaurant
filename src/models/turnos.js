@@ -16,7 +16,7 @@ const turnos = new Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 module.exports = mongoose.model("turnos", turnos, "turnos");

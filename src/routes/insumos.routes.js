@@ -11,7 +11,7 @@ router.post("/registro", async (req, res) => {
       res.status(200).json({
         mensaje: "Insumo registrado",
         datos: data,
-      })
+      }),
     )
     .catch((error) => res.json({ message: error }));
 });
@@ -43,7 +43,7 @@ router.put("/cancelar/:id", async (req, res) => {
     .then((data) =>
       res
         .status(200)
-        .json({ mensaje: "El insumo fue desactivado exitosamente" })
+        .json({ mensaje: "El insumo fue desactivado exitosamente" }),
     )
     .catch((error) => res.json({ message: error }));
 });
@@ -55,10 +55,10 @@ router.put("/actualizar/:id", async (req, res) => {
   await insumos
     .updateOne(
       { _id: id },
-      { $set: { nombre, umCompra, stock, precioCompra, precioUnitario } }
+      { $set: { nombre, umCompra, stock, precioCompra, precioUnitario } },
     )
     .then((data) =>
-      res.status(200).json({ mensaje: "Datos del insumo actualizados" })
+      res.status(200).json({ mensaje: "Datos del insumo actualizados" }),
     )
     .catch((error) => res.json({ message: error }));
 });

@@ -13,11 +13,11 @@ const movimientosTurnosCajas = new Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 module.exports = mongoose.model(
   "movimientosTurnosCajas",
   movimientosTurnosCajas,
-  "movimientosTurnosCajas"
+  "movimientosTurnosCajas",
 );

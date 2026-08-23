@@ -13,11 +13,11 @@ const movimientosInsumos = new Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 module.exports = mongoose.model(
   "movimientosInsumos",
   movimientosInsumos,
-  "movimientosInsumos"
+  "movimientosInsumos",
 );

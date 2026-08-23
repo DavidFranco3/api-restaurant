@@ -11,7 +11,7 @@ router.post("/registro", async (req, res) => {
       res.status(200).json({
         mensaje: "Movimiento de turno/caja registrado",
         datos: data,
-      })
+      }),
     )
     .catch((error) => res.json({ message: error }));
 });

@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 // modelo de la coleccion usuarios
-const usuarios = new Schema({
+const usuarios = new Schema(
+  {
     nombre: { type: String },
     apellidos: { type: String },
     telefono: { type: String },
@@ -14,9 +15,11 @@ const usuarios = new Schema({
     correo: { type: String },
     password: { type: String },
     foto: { type: String },
-    estadoUsuario: { type: String }
-}, {
-    timestamps: true
-});
+    estadoUsuario: { type: String },
+  },
+  {
+    timestamps: true,
+  },
+);
 
 module.exports = mongoose.model("usuarios", usuarios, "usuarios");

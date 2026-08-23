@@ -19,7 +19,7 @@ const ingredientes = new Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 module.exports = mongoose.model("ingredientes", ingredientes, " ingredientes");

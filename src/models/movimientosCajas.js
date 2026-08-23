@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 // modelo de la coleccion de movimientos de cajas
-const movimientosCajas = new Schema({
+const movimientosCajas = new Schema(
+  {
     idCaja: { type: String },
     idCajero: { type: String },
     cajero: { type: String },
@@ -14,8 +15,14 @@ const movimientosCajas = new Schema({
     dineroAcumulado: { type: String },
     observaciones: { type: String },
     estado: { type: String },
-}, {
-    timestamps: true
-});
+  },
+  {
+    timestamps: true,
+  },
+);
 
-module.exports = mongoose.model("movimientosCajas", movimientosCajas, "movimientosCajas");
+module.exports = mongoose.model(
+  "movimientosCajas",
+  movimientosCajas,
+  "movimientosCajas",
+);

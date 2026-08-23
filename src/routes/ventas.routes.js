@@ -14,7 +14,7 @@ router.post("/registro", async (req, res) => {
       res.status(200).json({
         mensaje: "Se ha registrado una nueva venta",
         datos: data,
-      })
+      }),
     )
     .catch((error) => res.json({ message: error }));
 });
@@ -967,7 +967,7 @@ router.put("/cancelar/:id", async (req, res) => {
   await ventas
     .updateOne({ _id: id }, { $set: { estado } })
     .then((data) =>
-      res.status(200).json({ mensaje: "Estado de la venta actualizado" })
+      res.status(200).json({ mensaje: "Estado de la venta actualizado" }),
     )
     .catch((error) => res.json({ message: error }));
 });
@@ -1024,10 +1024,10 @@ router.put("/actualizar/:id", async (req, res) => {
           estado,
           metodosDePago,
         },
-      }
+      },
     )
     .then((data) =>
-      res.status(200).json({ mensaje: "Datos del producto actualizados" })
+      res.status(200).json({ mensaje: "Datos del producto actualizados" }),
     )
     .catch((error) => res.json({ message: error }));
 });
@@ -1063,7 +1063,7 @@ router.put("/actualizarticket/:numeroTiquet", async (req, res) => {
           productos,
         },
       },
-      { new: true }
+      { new: true },
     );
     if (updatedVenta) {
       res.status(200).json({ mensaje: "Datos de la venta actualizados" });
@@ -1088,7 +1088,7 @@ router.put("/actualizarticketprods/:numeroTiquet", async (req, res) => {
       {
         $set: { productos, subtotal, detalles },
       },
-      { new: true }
+      { new: true },
     );
     if (updatedVenta) {
       res.status(200).json({ mensaje: "Datos de la venta actualizados" });
@@ -1159,7 +1159,7 @@ router.put("/cobrarTicket/:numeroTiquet", async (req, res) => {
           metodosPago,
         },
       },
-      { new: true }
+      { new: true },
     );
     if (updatedVenta) {
       res.status(200).json({ mensaje: "Datos de la venta actualizados" });

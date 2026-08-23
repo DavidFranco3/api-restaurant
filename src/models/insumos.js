@@ -14,7 +14,7 @@ const insumos = new Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 module.exports = mongoose.model("insumos", insumos, "insumos");

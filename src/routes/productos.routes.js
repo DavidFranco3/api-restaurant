@@ -11,7 +11,7 @@ router.post("/registro", async (req, res) => {
       res.status(200).json({
         mensaje: "Producto registrado",
         datos: data,
-      })
+      }),
     )
     .catch((error) => res.json({ message: error }));
 });
@@ -111,7 +111,7 @@ router.put("/cancelar/:id", async (req, res) => {
   await productos
     .updateOne({ _id: id }, { $set: { estado } })
     .then((data) =>
-      res.status(200).json({ mensaje: "Estado del producto actualizado" })
+      res.status(200).json({ mensaje: "Estado del producto actualizado" }),
     )
     .catch((error) => res.json({ message: error }));
 });
@@ -141,10 +141,10 @@ router.put("/actualizar/:id", async (req, res) => {
           precio,
           imagen,
         },
-      }
+      },
     )
     .then((data) =>
-      res.status(200).json({ mensaje: "Datos del producto actualizados" })
+      res.status(200).json({ mensaje: "Datos del producto actualizados" }),
     )
     .catch((error) => res.json({ message: error }));
 });

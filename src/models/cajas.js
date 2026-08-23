@@ -2,13 +2,16 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 // modelo de la coleccion cajas
-const cajas = new Schema({
+const cajas = new Schema(
+  {
     idCajero: { type: String },
     cajero: { type: String },
     estado: { type: String },
-    saldo: { type: Number }
-}, {
-    timestamps: true
-});
+    saldo: { type: Number },
+  },
+  {
+    timestamps: true,
+  },
+);
 
 module.exports = mongoose.model("cajas", cajas, "cajas");

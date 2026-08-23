@@ -11,7 +11,7 @@ router.post("/registro", async (req, res) => {
       res.status(200).json({
         mensaje: "Turno registrado",
         datos: data,
-      })
+      }),
     )
     .catch((error) => res.json({ message: error }));
 });
@@ -41,7 +41,7 @@ router.put("/cerrar/:id", async (req, res) => {
   await turnos
     .updateOne({ _id: id }, { $set: { estado, fechaFinal, totalEfectivo } })
     .then((data) =>
-      res.status(200).json({ mensaje: "Estado del ingrediente actualizado" })
+      res.status(200).json({ mensaje: "Estado del ingrediente actualizado" }),
     )
     .catch((error) => res.json({ message: error }));
 });
